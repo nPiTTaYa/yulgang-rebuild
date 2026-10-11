@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="th">
+<meta charset="utf-8">
+<title>โดเนท</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #0b1030; color: #f0c75e;
+    font: 14px "Segoe UI", "Leelawadee UI", sans-serif; }
+  body { display: flex; flex-direction: column; align-items: center; justify-content: center;
+    box-sizing: border-box; padding: 16px; gap: 12px; }
+  h1 { margin: 0; font-size: 18px; }
+  img { max-width: 100%; max-height: calc(100% - 60px); object-fit: contain;
+    border: 2px solid #f0c75e; border-radius: 8px; background: #fff; }
+  .none { display: none; }
+</style>
+<h1>ขอบคุณที่สนับสนุน ☀</h1>
+<img id="pic" src="donate.png" alt="donate">
+<div id="msg" class="none">ยังไม่มีรูป (วางไฟล์ donate.png ไว้ในโฟลเดอร์โปรแกรม)</div>
+<script>
+  const pic = document.getElementById('pic');
+  pic.addEventListener('error', () => {
+    pic.style.display = 'none';
+    document.getElementById('msg').classList.remove('none');
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') window.close(); });
+</script>

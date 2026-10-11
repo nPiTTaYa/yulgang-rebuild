@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="th">
+<meta charset="utf-8">
+<title>bar</title>
+<style>
+  :root { --blue: #1b2a6b; --blue2: #4169e1; --gold: #f0c75e; }
+  html, body { margin: 0; height: 100%; overflow: hidden; user-select: none;
+    font: 12px "Segoe UI", "Leelawadee UI", sans-serif; }
+  body { display: flex; align-items: center; box-sizing: border-box; color: var(--gold);
+    background: linear-gradient(90deg, var(--blue), var(--blue2));
+    border-bottom: 2px solid var(--gold); -webkit-app-region: drag; }
+  .title { flex: 1; padding: 0 12px; font-weight: 600; white-space: nowrap; }
+  .btns { display: flex; height: 100%; -webkit-app-region: no-drag; }
+  button { border: 0; background: transparent; color: var(--gold); padding: 0 12px;
+    font: inherit; cursor: pointer; }
+  button:hover { background: var(--gold); color: var(--blue); }
+  button.close:hover { background: #c0392b; color: #fff; }
+  /* ตอน PiP แถบจะเหลือแค่เส้นบางๆ ไว้ลากหน้าต่าง */
+  @media (max-height: 14px) { .title, .btns { display: none; } }
+</style>
+<div class="title">☀ สุริยันต์ดับดารา</div>
+<div class="btns">
+  <button data-a="pip" title="PiP (Ctrl+Shift+P)">PiP</button>
+  <button data-a="donate" title="สนับสนุน / โดเนท">โดเนท</button>
+  <button data-a="hide" title="ซ่อนและปิดเสียง (F8)">ซ่อน</button>
+  <button data-a="fullscreen" title="เต็มหน้าจอ (F11)">เต็มจอ</button>
+  <button data-a="reload" title="โหลดใหม่ (F5)">↻</button>
+  <button data-a="help" title="วิธีใช้ (F1)">?</button>
+  <button data-a="minimize" title="ย่อ">–</button>
+  <button data-a="maximize" title="ขยาย/คืนขนาด">□</button>
+  <button data-a="close" class="close" title="ปิดโปรแกรม">✕</button>
+</div>
+<script>
+  document.querySelectorAll('button').forEach((b) =>
+    b.addEventListener('click', () => window.bar.act(b.dataset.a)));
+</script>
